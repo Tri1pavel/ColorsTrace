@@ -39,7 +39,7 @@ class ColorsTraceHandler {
     private func addView(gesture: UITapGestureRecognizer) {
         guard selectedColor != nil  else { return }
         // Update hash for selected color
-        self.updateHash(ascending: true)
+        let current = self.updateHash(ascending: true)
         // Get location on canvas
         let location = gesture.location(in: self.canvas)
         let size = 50.0
@@ -51,19 +51,21 @@ class ColorsTraceHandler {
         // Set text attributes
         view.textColor = .white
         view.textAlignment = .center
-        view.text = String(hash[selectedColor] ?? 0)
+        view.text = current == 0 ? "" : String(current)
         // Set font
         view.font = UIFont.boldSystemFont(ofSize: 20)
         // Add to canvas
         self.canvas.addSubview(view)
     }
     
-    private func updateHash(ascending: Bool) {
-        let current = hash[selectedColor] ?? 0
-        hash[selectedColor] =
-            ascending ?
-                current + 1 :
-                max(0, current - 1)
+    @discardableResult
+    private func updateHash(ascending: Bool) -> Int {
+        var current = hash[selectedColor] ?? 0
+        current = ascending ?
+                    current + 1 :
+                    max(0, current - 1)
+        hash[selectedColor] = current
+        return current
     }
     
 }

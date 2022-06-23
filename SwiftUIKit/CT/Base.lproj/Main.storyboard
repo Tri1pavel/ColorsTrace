@@ -116,19 +116,19 @@
     </scenes>
     <resources>
         <namedColor name="background">
-            <color red="0.93233062103911712" green="0.93233062103911712" blue="0.93233062103911712" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.93199998140335083" green="0.93199998140335083" blue="0.93199998140335083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="blueColor">
-            <color red="0.3829495905911604" green="0.48969102907381096" blue="0.84949071924169584" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.38299998641014099" green="0.49000000953674316" blue="0.84899997711181641" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="greenColor">
-            <color red="0.43114738247990225" green="0.85490321446131989" blue="0.46313086465782932" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.4309999942779541" green="0.85500001907348633" blue="0.46299999952316284" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="orangeColor">
-            <color red="0.86223340868116261" green="0.53306075201197634" blue="0.19917103537112144" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.8619999885559082" green="0.53299999237060547" blue="0.19900000095367432" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="redColor">
-            <color red="0.94542048527644229" green="0.34418821560903062" blue="0.29414358916156486" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.94499999284744263" green="0.34400001168251038" blue="0.29399999976158142" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

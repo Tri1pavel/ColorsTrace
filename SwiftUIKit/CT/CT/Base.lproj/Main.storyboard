@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Colors Trace View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ColorsTraceViewController" customModule="CT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pDz-EX-8AY">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aHb-gC-Iz5">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="714.5"/>
+                                        <color key="backgroundColor" name="background"/>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JG2-xg-06i">
+                                        <rect key="frame" x="0.0" y="714.5" width="414" height="103.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTN-Gw-Dst">
+                                                <rect key="frame" x="0.0" y="0.0" width="103.5" height="103.5"/>
+                                                <color key="backgroundColor" name="orangeColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="OTN-Gw-Dst" secondAttribute="height" multiplier="1:1" id="70F-oE-6Ru"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                <connections>
+                                                    <action selector="buttonWasSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QXb-b0-3sO"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vJ-hN-LBR">
+                                                <rect key="frame" x="103.5" y="0.0" width="103.5" height="103.5"/>
+                                                <color key="backgroundColor" name="greenColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                <connections>
+                                                    <action selector="buttonWasSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uob-NO-KG0"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U0J-45-aO0">
+                                                <rect key="frame" x="207" y="0.0" width="103.5" height="103.5"/>
+                                                <color key="backgroundColor" name="blueColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                <connections>
+                                                    <action selector="buttonWasSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J3R-Og-bDQ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DN2-cY-EHk">
+                                                <rect key="frame" x="310.5" y="0.0" width="103.5" height="103.5"/>
+                                                <color key="backgroundColor" name="redColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                <connections>
+                                                    <action selector="buttonWasSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ioq-ds-A7p"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pDz-EX-8AY" secondAttribute="bottom" id="Zk5-bz-ba5"/>
+                            <constraint firstItem="pDz-EX-8AY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="aIn-29-zuz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pDz-EX-8AY" secondAttribute="trailing" id="s2I-Rc-mIp"/>
+                            <constraint firstItem="pDz-EX-8AY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xCr-NZ-YIT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outletCollection property="colorButtons" destination="OTN-Gw-Dst" collectionClass="NSMutableArray" id="nt8-zb-Uow"/>
+                        <outletCollection property="colorButtons" destination="U0J-45-aO0" collectionClass="NSMutableArray" id="69q-ft-fgI"/>
+                        <outletCollection property="colorButtons" destination="DN2-cY-EHk" collectionClass="NSMutableArray" id="05t-8a-LbM"/>
+                        <outletCollection property="colorButtons" destination="8vJ-hN-LBR" collectionClass="NSMutableArray" id="bor-OH-9aD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="116"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="background">
+            <color red="0.93233062103911712" green="0.93233062103911712" blue="0.93233062103911712" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="blueColor">
+            <color red="0.3829495905911604" green="0.48969102907381096" blue="0.84949071924169584" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="greenColor">
+            <color red="0.43114738247990225" green="0.85490321446131989" blue="0.46313086465782932" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="orangeColor">
+            <color red="0.86223340868116261" green="0.53306075201197634" blue="0.19917103537112144" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="redColor">
+            <color red="0.94542048527644229" green="0.34418821560903062" blue="0.29414358916156486" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

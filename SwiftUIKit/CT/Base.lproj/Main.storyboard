@@ -82,14 +82,22 @@
                     </view>
                     <navigationItem key="navigationItem" id="u53-Sy-eyW">
                         <barButtonItem key="leftBarButtonItem" enabled="NO" title="Selected color" id="cl8-In-OCk"/>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Undo" id="K4O-oO-zyl">
-                            <connections>
-                                <action selector="undoPressed:" destination="BYZ-38-t0r" id="aCl-ca-S0e"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem enabled="NO" title="Undo" id="K4O-oO-zyl">
+                                <connections>
+                                    <action selector="undoPressed:" destination="BYZ-38-t0r" id="aCl-ca-S0e"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" title="Redo" id="uSx-Cj-jXZ">
+                                <connections>
+                                    <action selector="redoPressed:" destination="BYZ-38-t0r" id="jvM-e9-zZo"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="colorView" destination="aHb-gC-Iz5" id="2nc-e0-gaE"/>
+                        <outlet property="redoBarButtonItem" destination="uSx-Cj-jXZ" id="dj4-xz-9mM"/>
                         <outlet property="undoBarButtonItem" destination="K4O-oO-zyl" id="85r-Ml-Bf7"/>
                         <outletCollection property="colorButtons" destination="OTN-Gw-Dst" collectionClass="NSMutableArray" id="nt8-zb-Uow"/>
                         <outletCollection property="colorButtons" destination="U0J-45-aO0" collectionClass="NSMutableArray" id="69q-ft-fgI"/>

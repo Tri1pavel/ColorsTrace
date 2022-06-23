@@ -12,7 +12,8 @@ class ColorsTraceViewController: UIViewController {
     @IBOutlet var colorView: UIView!
     @IBOutlet var colorButtons: [UIButton]!
     @IBOutlet var undoBarButtonItem: UIBarButtonItem!
-        
+    @IBOutlet var redoBarButtonItem: UIBarButtonItem!
+    
     private lazy var handler: ColorsTraceHandler? = {
         let handler = ColorsTraceHandler(
             canvas: colorView,
@@ -21,6 +22,8 @@ class ColorsTraceViewController: UIViewController {
                 self.updateNavigationItemSelectedColor(color)
             }, undoWasChanged: { isEnabled in
                 self.undoBarButtonItem.isEnabled = isEnabled
+            }, redoWasChanged: { isEnabled in
+                self.redoBarButtonItem.isEnabled = isEnabled
             })
         return handler
     }()
@@ -57,6 +60,10 @@ extension ColorsTraceViewController {
     
     @IBAction func undoPressed(_ sender: UIBarButtonItem) {
         handler?.undo()
+    }
+    
+    @IBAction func redoPressed(_ sender: UIBarButtonItem) {
+        handler?.redo()
     }
     
 }

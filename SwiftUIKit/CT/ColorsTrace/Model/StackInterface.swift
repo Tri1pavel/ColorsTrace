@@ -7,12 +7,31 @@
 
 import Foundation
 
+/// Generic stack interface.
 protocol StackInterface {
     associatedtype Element
     mutating func push(_ element: Element)
     mutating func pop() -> Element?
     func peek() -> Element?
 }
+
+/// An object that comforts generic stack interface. Use *Element* as generic associatedtype.
+/// - Parameter items: Populate stack with initial values
+///
+/// Adds a new element at the end of the stack.
+/// ```
+/// func push(_ element: Element)
+/// ```
+///
+/// Removes and returns the last element of the stack.
+/// ```
+/// func pop() -> Element?
+/// ```
+///
+/// R eturns the last element of the stack.
+/// ```
+/// func peek() -> Element?
+/// ```
 
 struct Stack<Element>: StackInterface {
     typealias Element = Element

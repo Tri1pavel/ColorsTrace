@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="akH-DQ-9g8">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Colors Trace View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ColorsTraceViewController" customModule="CT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pDz-EX-8AY">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aHb-gC-Iz5">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="670.5"/>
+                                        <color key="backgroundColor" name="background"/>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JG2-xg-06i">
+                                        <rect key="frame" x="0.0" y="670.5" width="414" height="103.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTN-Gw-Dst">
+                                                <rect key="frame" x="0.0" y="0.0" width="103.5" height="103.5"/>
+                                                <color key="backgroundColor" name="orangeColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="OTN-Gw-Dst" secondAttribute="height" multiplier="1:1" id="70F-oE-6Ru"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                <connections>
+                                                    <action selector="buttonWasTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xpS-Nk-Roj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vJ-hN-LBR">
+                                                <rect key="frame" x="103.5" y="0.0" width="103.5" height="103.5"/>
+                                                <color key="backgroundColor" name="greenColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                <connections>
+                                                    <action selector="buttonWasTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tbj-fd-kVz"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U0J-45-aO0">
+                                                <rect key="frame" x="207" y="0.0" width="103.5" height="103.5"/>
+                                                <color key="backgroundColor" name="blueColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                <connections>
+                                                    <action selector="buttonWasTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="siO-O6-0dm"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DN2-cY-EHk">
+                                                <rect key="frame" x="310.5" y="0.0" width="103.5" height="103.5"/>
+                                                <color key="backgroundColor" name="redColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                <connections>
+                                                    <action selector="buttonWasTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T21-on-1Ew"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pDz-EX-8AY" secondAttribute="bottom" id="Zk5-bz-ba5"/>
+                            <constraint firstItem="pDz-EX-8AY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="aIn-29-zuz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pDz-EX-8AY" secondAttribute="trailing" id="s2I-Rc-mIp"/>
+                            <constraint firstItem="pDz-EX-8AY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xCr-NZ-YIT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="u53-Sy-eyW">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Selected color" id="cl8-In-OCk"/>
+                        <rightBarButtonItems>
+                            <barButtonItem enabled="NO" title="Undo" id="K4O-oO-zyl">
+                                <connections>
+                                    <action selector="undoPressed:" destination="BYZ-38-t0r" id="aCl-ca-S0e"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" title="Redo" id="uSx-Cj-jXZ">
+                                <connections>
+                                    <action selector="redoPressed:" destination="BYZ-38-t0r" id="jvM-e9-zZo"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="colorView" destination="aHb-gC-Iz5" id="2nc-e0-gaE"/>
+                        <outlet property="redoBarButtonItem" destination="uSx-Cj-jXZ" id="dj4-xz-9mM"/>
+                        <outlet property="undoBarButtonItem" destination="K4O-oO-zyl" id="85r-Ml-Bf7"/>
+                        <outletCollection property="colorButtons" destination="OTN-Gw-Dst" collectionClass="NSMutableArray" id="nt8-zb-Uow"/>
+                        <outletCollection property="colorButtons" destination="U0J-45-aO0" collectionClass="NSMutableArray" id="69q-ft-fgI"/>
+                        <outletCollection property="colorButtons" destination="DN2-cY-EHk" collectionClass="NSMutableArray" id="05t-8a-LbM"/>
+                        <outletCollection property="colorButtons" destination="8vJ-hN-LBR" collectionClass="NSMutableArray" id="bor-OH-9aD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="115.84821428571428"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qSy-ow-dWR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="akH-DQ-9g8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Tg-Qf-Z11">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="I7E-IJ-Jt6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kPw-zT-hY4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="115.84821428571428"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="background">
+            <color red="0.93199998140335083" green="0.93199998140335083" blue="0.93199998140335083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="blueColor">
+            <color red="0.38299998641014099" green="0.49000000953674316" blue="0.84899997711181641" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="greenColor">
+            <color red="0.4309999942779541" green="0.85500001907348633" blue="0.46299999952316284" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="orangeColor">
+            <color red="0.8619999885559082" green="0.53299999237060547" blue="0.19900000095367432" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="redColor">
+            <color red="0.94499999284744263" green="0.34400001168251038" blue="0.29399999976158142" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

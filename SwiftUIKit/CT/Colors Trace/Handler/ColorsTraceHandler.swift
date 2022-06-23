@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-/// An object that manages trace of selected color by switching beetwen color buttons.
+/// An object that manages trace of selected color by switching between color buttons.
 /// Handle tap gesture to add *UIView* on canvas.
 /// Handle event when color was changed.
 /// Handle event when undo stack of *UIView* was changed.
@@ -16,7 +16,7 @@ import UIKit
 ///
 /// - **Parameters**
 ///     - **canvas**: *UIView* for adding selected color view by tap
-///     - **colors**: *[UIButton]* for switch beetwen colors. *Color = UIButton.backgroundColor*
+///     - **colors**: *[UIButton]* for switch between colors. *Color = UIButton.backgroundColor*
 ///     - **colorWasChanged**: Completion handler event when *color* **was changed**
 ///     - **undoWasChanged**: Completion handler event when *undo stack* **was changed**
 ///     - **redoWasChanged**: Completion handler event when *redo stack* **was changed**

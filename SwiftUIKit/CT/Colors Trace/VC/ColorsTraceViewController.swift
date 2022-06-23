@@ -19,7 +19,7 @@ class ColorsTraceViewController: UIViewController {
             canvas: colorView,
             colors: colorButtons,
             colorWasChanged: { color in
-                self.updateNavigationItemSelectedColor(color)
+                self.updateSelectedColorBarButtonItem(with: color)
             }, undoWasChanged: { isEnabled in
                 self.undoBarButtonItem.isEnabled = isEnabled
             }, redoWasChanged: { isEnabled in
@@ -28,26 +28,29 @@ class ColorsTraceViewController: UIViewController {
         return handler
     }()
        
-    private func updateSelectedColorBarItem(with color: UIColor? = nil) -> UIBarButtonItem? {
-        guard color != nil else {
-            return nil
+    private func updateSelectedColorBarButtonItem(with color: UIColor? = nil) {
+        var barButtonItem: UIBarButtonItem?
+        
+        defer {
+            self.navigationItem.leftBarButtonItem = barButtonItem
         }
         
-        let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 32.0, height: 32.0))
-        view.layer.cornerRadius = view.frame.width * 0.5
+        guard color != nil else {
+            return
+        }
+        
+        let size = 32.0
+        let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: size, height: size))
+        view.layer.cornerRadius = size * 0.5
         view.backgroundColor = color
-
-        return UIBarButtonItem(customView: view)
+        
+        barButtonItem = UIBarButtonItem(customView: view)
     }
-    
-    private func updateNavigationItemSelectedColor(_ color: UIColor? = nil) {
-        self.navigationItem.leftBarButtonItem = updateSelectedColorBarItem(with: color)
-    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.updateNavigationItemSelectedColor()
+        self.updateSelectedColorBarButtonItem()
     }
 
 }

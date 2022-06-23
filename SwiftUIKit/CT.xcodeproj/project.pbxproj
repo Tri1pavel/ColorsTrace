@@ -62,7 +62,8 @@
 			children = (
 				33EA0BCD28645F18007EF481 /* AppDelegate.swift */,
 				33EA0BCF28645F18007EF481 /* SceneDelegate.swift */,
-				33EA0BE12864627B007EF481 /* ColorsTrace */,
+				33EA0BE828650AF6007EF481 /* Data Structure */,
+				33EA0BE12864627B007EF481 /* Colors Trace */,
 				33EA0BD328645F18007EF481 /* Main.storyboard */,
 				33EA0BD628645F1A007EF481 /* Assets.xcassets */,
 				33EA0BD828645F1A007EF481 /* LaunchScreen.storyboard */,
@@ -71,13 +72,13 @@
 			path = CT;
 			sourceTree = "<group>";
 		};
-		33EA0BE12864627B007EF481 /* ColorsTrace */ = {
+		33EA0BE12864627B007EF481 /* Colors Trace */ = {
 			isa = PBXGroup;
 			children = (
-				33EA0BE3286462AB007EF481 /* Model */,
+				33EA0BE3286462AB007EF481 /* Handler */,
 				33EA0BE22864629B007EF481 /* VC */,
 			);
-			path = ColorsTrace;
+			path = "Colors Trace";
 			sourceTree = "<group>";
 		};
 		33EA0BE22864629B007EF481 /* VC */ = {
@@ -88,13 +89,20 @@
 			path = VC;
 			sourceTree = "<group>";
 		};
-		33EA0BE3286462AB007EF481 /* Model */ = {
+		33EA0BE3286462AB007EF481 /* Handler */ = {
 			isa = PBXGroup;
 			children = (
 				33EA0BE4286482B1007EF481 /* ColorsTraceHandler.swift */,
+			);
+			path = Handler;
+			sourceTree = "<group>";
+		};
+		33EA0BE828650AF6007EF481 /* Data Structure */ = {
+			isa = PBXGroup;
+			children = (
 				33EA0BE62864A620007EF481 /* StackInterface.swift */,
 			);
-			path = Model;
+			path = "Data Structure";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

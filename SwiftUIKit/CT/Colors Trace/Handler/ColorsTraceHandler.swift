@@ -14,13 +14,12 @@ import UIKit
 /// Handle event when undo stack of *UIView* was changed.
 /// Handle event when redo stack of *UIView* was changed.
 ///
-/// - **Parameter**
+/// - **Parameters**
 ///     - **canvas**: *UIView* for adding selected color view by tap
-///     - **colors**: *[UIButton]* for switch beetwen colors. Color = *UIButton.backgroundColor*
-///     - colorWasChangedCompletionHandler: Completion handler event when color was changed
-///     - undoWasChangedCompletionHandler: Completion handler event when undo stack was changed
-///     - redoWasChangedCompletionHandler: Completion handler event when redo stack was changed
-
+///     - **colors**: *[UIButton]* for switch beetwen colors. *Color = UIButton.backgroundColor*
+///     - **colorWasChanged**: Completion handler event when *color* **was changed**
+///     - **undoWasChanged**: Completion handler event when *undo stack* **was changed**
+///     - **redoWasChanged**: Completion handler event when *redo stack* **was changed**
 class ColorsTraceHandler {
     private var canvas: UIView
     private var colors: [UIButton]
@@ -37,7 +36,6 @@ class ColorsTraceHandler {
     private var undoStack = Stack<UIView>()
     private var redoStack = Stack<UIView>()
     
-
     init(canvas: UIView,
          colors: [UIButton],
          colorWasChanged: @escaping (UIColor?) -> (),
@@ -59,9 +57,12 @@ class ColorsTraceHandler {
     
     @objc
     private func addView(gesture: UITapGestureRecognizer) {
-        guard let color = selectedColor else { return }
+        guard let color = selectedColor else {
+            return
+        }
         // Get location on canvas
         let location = gesture.location(in: self.canvas)
+        // Add view at location on canvas with specific color
         addView(at: location, color: color)
     }
     
@@ -69,18 +70,17 @@ class ColorsTraceHandler {
         let size = 50.0
         let view = UILabel(frame: CGRect.init(x: location.x - size * 0.5, y: location.y - size * 0.5, width: size, height: size))
         view.backgroundColor = color
-        // Update hash for added color
-        let current = self.updateHash(color:view.backgroundColor,
-                                      ascending: true)
         // Add rounded corners
         view.layer.cornerRadius = size * 0.5
         view.clipsToBounds = true
+        // Set font
+        view.font = UIFont.boldSystemFont(ofSize: 20)
         // Set text attributes
         view.textColor = .white
         view.textAlignment = .center
-        view.text = current == 0 ? "" : String(current)
-        // Set font
-        view.font = UIFont.boldSystemFont(ofSize: 20)
+        // Update hash for added color
+        let current = self.updateHash(color:view.backgroundColor, ascending: true)
+        view.text = String(current)
         // Add to canvas
         self.canvas.addSubview(view)
         // Add view to "undo" stack
@@ -125,14 +125,13 @@ extension ColorsTraceHandler {
         guard let view = self.undoStack.pop() else {
             return
         }
-        // Update hash for removed color
-        self.updateHash(color: view.backgroundColor,
-                        ascending: false)
-        // Remove view from canvas
-        view.removeFromSuperview()
         // Undo completion handler
         let isUndoEnabled = self.undoStack.items.isEmpty ? false : true
         self.undoWasChangedCompletionHandler(isUndoEnabled)
+        // Update hash for removed color
+        self.updateHash(color: view.backgroundColor, ascending: false)
+        // Remove view from canvas
+        view.removeFromSuperview()
         // Add view to "redo" stack
         redoStack.push(view)
         // Redo completion handler
@@ -144,14 +143,14 @@ extension ColorsTraceHandler {
         guard let view = self.redoStack.pop() else {
             return
         }
-        // Get location from restored view on canvas
-        let location = CGPoint(x: view.frame.origin.x + view.frame.width * 0.5,
-                               y: view.frame.origin.y + view.frame.height * 0.5)
-        // Add restored view to canvas
-        addView(at: location, color: view.backgroundColor)
         // Redo completion handler
         let isRedoEnabled = self.redoStack.items.isEmpty ? false : true
         self.redoWasChangedCompletionHandler(isRedoEnabled)
+        // Get location from restored view on canvas
+        let location = CGPoint(x: view.frame.origin.x + view.frame.width * 0.5,
+                               y: view.frame.origin.y + view.frame.height * 0.5)
+        // Add restored view at location on canvas with specific color
+        addView(at: location, color: view.backgroundColor)
     }
     
 }

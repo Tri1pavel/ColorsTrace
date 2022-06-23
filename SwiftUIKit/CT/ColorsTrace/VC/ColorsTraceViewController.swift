@@ -11,14 +11,17 @@ class ColorsTraceViewController: UIViewController {
 
     @IBOutlet var colorView: UIView!
     @IBOutlet var colorButtons: [UIButton]!
-    
+    @IBOutlet var undoBarButtonItem: UIBarButtonItem!
+        
     private lazy var handler: ColorsTraceHandler? = {
         let handler = ColorsTraceHandler(
             canvas: colorView,
             colors: colorButtons,
             colorWasChanged: { color in
                 self.updateNavigationItemSelectedColor(color)
-        })
+            }, undoWasChanged: { isEnabled in
+                self.undoBarButtonItem.isEnabled = isEnabled
+            })
         return handler
     }()
        
@@ -50,6 +53,10 @@ extension ColorsTraceViewController {
     
     @IBAction func buttonWasTapped(_ sender: UIButton) {
         handler?.colorWasChanged(sender)
+    }
+    
+    @IBAction func undoPressed(_ sender: UIBarButtonItem) {
+        handler?.undo()
     }
     
 }

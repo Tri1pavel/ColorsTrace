@@ -14,6 +14,7 @@
 		33EA0BD728645F1A007EF481 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33EA0BD628645F1A007EF481 /* Assets.xcassets */; };
 		33EA0BDA28645F1A007EF481 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33EA0BD828645F1A007EF481 /* LaunchScreen.storyboard */; };
 		33EA0BE5286482B1007EF481 /* ColorsTraceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EA0BE4286482B1007EF481 /* ColorsTraceHandler.swift */; };
+		33EA0BE72864A620007EF481 /* StackInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EA0BE62864A620007EF481 /* StackInterface.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		33EA0BD928645F1A007EF481 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		33EA0BDB28645F1A007EF481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33EA0BE4286482B1007EF481 /* ColorsTraceHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsTraceHandler.swift; sourceTree = "<group>"; };
+		33EA0BE62864A620007EF481 /* StackInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackInterface.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				33EA0BE4286482B1007EF481 /* ColorsTraceHandler.swift */,
+				33EA0BE62864A620007EF481 /* StackInterface.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33EA0BE72864A620007EF481 /* StackInterface.swift in Sources */,
 				33EA0BD228645F18007EF481 /* ColorsTraceViewController.swift in Sources */,
 				33EA0BCE28645F18007EF481 /* AppDelegate.swift in Sources */,
 				33EA0BE5286482B1007EF481 /* ColorsTraceHandler.swift in Sources */,

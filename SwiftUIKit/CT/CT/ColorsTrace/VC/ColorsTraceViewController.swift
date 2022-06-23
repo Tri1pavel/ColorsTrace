@@ -9,11 +9,15 @@ import UIKit
 
 class ColorsTraceViewController: UIViewController {
 
+    @IBOutlet var colorView: UIView!
     @IBOutlet var colorButtons: [UIButton]!
     
     private lazy var handler: ColorsTraceHandler? = {
-        let handler = ColorsTraceHandler(colors: colorButtons, colorWasChanged: { color in
-            self.updateNavigationItemSelectedColor(color)
+        let handler = ColorsTraceHandler(
+            canvas: colorView,
+            colors: colorButtons,
+            colorWasChanged: { color in
+                self.updateNavigationItemSelectedColor(color)
         })
         return handler
     }()

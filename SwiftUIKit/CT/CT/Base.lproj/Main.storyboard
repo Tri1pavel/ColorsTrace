@@ -84,6 +84,7 @@
                         <barButtonItem key="leftBarButtonItem" enabled="NO" title="Selected color" id="cl8-In-OCk"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="colorView" destination="aHb-gC-Iz5" id="2nc-e0-gaE"/>
                         <outletCollection property="colorButtons" destination="OTN-Gw-Dst" collectionClass="NSMutableArray" id="nt8-zb-Uow"/>
                         <outletCollection property="colorButtons" destination="U0J-45-aO0" collectionClass="NSMutableArray" id="69q-ft-fgI"/>
                         <outletCollection property="colorButtons" destination="DN2-cY-EHk" collectionClass="NSMutableArray" id="05t-8a-LbM"/>

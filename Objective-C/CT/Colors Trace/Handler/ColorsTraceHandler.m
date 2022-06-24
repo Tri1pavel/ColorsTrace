@@ -9,9 +9,11 @@
 
 @interface ColorsTraceHandler ()
 @property (strong, nonatomic) UIView *canvas;
-@property (strong, nonatomic) UIColor *selectedColor;
 @property (strong, nonatomic) NSArray *colorButtons;
 @property (nonatomic, copy) void (^colorWasChanged)(UIColor *color);
+
+@property (strong, nonatomic) UIColor *selectedColor;
+@property (strong, nonatomic) NSMutableDictionary *hashColorDictionary;
 @end
 
 @implementation ColorsTraceHandler
@@ -29,6 +31,9 @@
         self.canvas = canvas;
         self.colorButtons = colorButtons;
         self.colorWasChanged = colorWasChangedHandler;
+        
+        // Init dictionary for hash colors
+        self.hashColorDictionary = [[NSMutableDictionary alloc] init];
         
         [self addTapGestureRecognizerToCanvas];
     }
@@ -52,13 +57,28 @@
 
 - (void)addViewAt:(CGPoint) location withColor:(UIColor *) color {
     CGFloat size = 50.0;
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(location.x - size * 0.5, location.y - size * 0.5, size, size)];
+    UILabel *view = [[UILabel alloc] initWithFrame:CGRectMake(location.x - size * 0.5, location.y - size * 0.5, size, size)];
     view.backgroundColor = color;
     // Add rounded corners
     view.layer.cornerRadius = size * 0.5;
     view.clipsToBounds = true;
+    // Set font
+    [view setFont:[UIFont systemFontOfSize:20]];
+    // Set text attributes
+    [view setTextColor:[UIColor whiteColor]];
+    [view setTextAlignment:NSTextAlignmentCenter];
+    // Update hash for added color
+    int current = [self updateHashWithColor:color withAscending:TRUE];
+    [view setText:[NSString stringWithFormat:@"%i",current]];
     // Add to canvas
     [self.canvas addSubview:view];
+}
+
+- (int)updateHashWithColor:(UIColor *) color withAscending:(BOOL) isAscending {
+    int current = [[self.hashColorDictionary objectForKey:color] intValue];
+    current = isAscending ? current + 1 : MAX(0, current - 1);
+    [self.hashColorDictionary setObject:[NSNumber numberWithInt:current] forKey:color];
+    return current;
 }
 
 - (void)colorWasChanged:(UIButton *)sender {

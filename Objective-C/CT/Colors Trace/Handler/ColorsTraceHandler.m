@@ -6,14 +6,17 @@
 //
 
 #import "ColorsTraceHandler.h"
+#import "Stack.h"
 
 @interface ColorsTraceHandler ()
 @property (strong, nonatomic) UIView *canvas;
 @property (strong, nonatomic) NSArray *colorButtons;
 @property (nonatomic, copy) void (^colorWasChanged)(UIColor *color);
+@property (nonatomic, copy) void (^undoStackWasChanged)(BOOL isEnabled);
 
 @property (strong, nonatomic) UIColor *selectedColor;
 @property (strong, nonatomic) NSMutableDictionary *hashColorDictionary;
+@property (strong, nonatomic) Stack *undoStack;
 @end
 
 @implementation ColorsTraceHandler
@@ -25,15 +28,21 @@
     self.colorWasChanged(color);
 }
 
-- (id)initWithCanvas:(UIView *) canvas withColorButtons:(NSArray *) colorButtons withColorWasChangedHandler:(void (^)(UIColor *color)) colorWasChangedHandler {
+- (id)initWithCanvas:(UIView *) canvas
+    withColorButtons:(NSArray *) colorButtons
+    withColorWasChangedHandler:(void (^)(UIColor *color)) colorWasChangedHandler
+    withUndoStackWasChangedHandler:(void (^)(BOOL isEnabled)) undoStackWasChangedHandler {
     self = [super init];
     if (self) {
         self.canvas = canvas;
         self.colorButtons = colorButtons;
         self.colorWasChanged = colorWasChangedHandler;
+        self.undoStackWasChanged = undoStackWasChangedHandler;
         
         // Init dictionary for hash colors
         self.hashColorDictionary = [[NSMutableDictionary alloc] init];
+        // Init undo stack
+        self.undoStack = [[Stack alloc] init];
         
         [self addTapGestureRecognizerToCanvas];
     }
@@ -72,6 +81,11 @@
     [view setText:[NSString stringWithFormat:@"%i",current]];
     // Add to canvas
     [self.canvas addSubview:view];
+    // Add view to "undo" stack
+    [self.undoStack push:view];
+    // Undo completion handler
+    BOOL isEnabled = [self.undoStack.items count] == 0 ? FALSE : TRUE;
+    self.undoStackWasChanged(isEnabled);
 }
 
 - (int)updateHashWithColor:(UIColor *) color withAscending:(BOOL) isAscending {
@@ -95,6 +109,17 @@
     }
     
     self.selectedColor = sender.isSelected ? sender.backgroundColor : nil;
+}
+
+- (void)undo {
+    UIView *view = [self.undoStack pop];
+    // Undo completion handler
+    BOOL isUndoEnabled = [self.undoStack.items count] == 0 ? FALSE : TRUE;
+    self.undoStackWasChanged(isUndoEnabled);
+    // Update hash for removed color
+    [self updateHashWithColor: view.backgroundColor withAscending: FALSE];
+    // Remove view from canvas
+    [view removeFromSuperview];
 }
 
 @end

@@ -82,9 +82,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="j5K-G0-5Aa">
                         <barButtonItem key="leftBarButtonItem" enabled="NO" title="Selected color" id="Wed-Y4-bdt"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Undo" id="lVM-dD-p5M">
+                            <connections>
+                                <action selector="undoPressed:" destination="BYZ-38-t0r" id="diK-Dw-adR"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="colorView" destination="let-g0-tgH" id="tBR-Tc-k0g"/>
+                        <outlet property="undoBarButtonItem" destination="lVM-dD-p5M" id="v2i-Zj-RUE"/>
                         <outletCollection property="colorButtons" destination="Ovk-IZ-Ak9" id="fW8-7x-xcq"/>
                         <outletCollection property="colorButtons" destination="HEj-wu-z7h" id="Zrt-wk-g7Q"/>
                         <outletCollection property="colorButtons" destination="Whh-Ns-RCN" id="UqP-qT-5A7"/>

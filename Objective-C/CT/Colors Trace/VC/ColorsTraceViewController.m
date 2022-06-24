@@ -11,6 +11,7 @@
 @interface ColorsTraceViewController ()
 @property (strong, nonatomic) IBOutlet UIView *colorView;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *colorButtons;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *undoBarButtonItem;
 @property (strong, nonatomic) ColorsTraceHandler *handler;
 @end
 
@@ -26,7 +27,11 @@
                     withColorButtons:self.colorButtons
                     withColorWasChangedHandler:^(UIColor *color) {
         [self updateSelectedColorBarButtonItemByColor: color];
+    }
+                    withUndoStackWasChangedHandler:^(BOOL isEnabled) {
+        [self.undoBarButtonItem setEnabled: isEnabled];
     }];
+
 }
 
 - (void)updateSelectedColorBarButtonItemByColor:(UIColor *) color {
@@ -45,6 +50,10 @@
 
 - (IBAction)buttonWasTapped:(UIButton *)sender {
     [self.handler colorWasChanged: sender];
+}
+
+- (IBAction)undoPressed:(UIBarButtonItem *)sender {
+    [self.handler undo];
 }
 
 @end

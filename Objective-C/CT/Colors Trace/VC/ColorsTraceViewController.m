@@ -17,6 +17,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self updateSelectedColorBarButtonItemByColor: nil];
+}
+
+- (void)updateSelectedColorBarButtonItemByColor:(UIColor *) color {
+    UIBarButtonItem *barButtonItem;
+    
+    if (color) {
+        CGFloat size = 32.0;
+        UIView *view = [[UIView alloc] initWithFrame: CGRectMake(0.0, 0.0, size, size)];
+        view.layer.cornerRadius = size * 0.5;
+        view.backgroundColor = color;
+        barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
+    }
+    
+    self.navigationItem.leftBarButtonItem = barButtonItem;
 }
 
 - (IBAction)buttonWasTapped:(UIButton *)sender {
@@ -33,6 +48,8 @@
     }
 
     self.selectedColor = sender.isSelected ? sender.backgroundColor : nil;
+    
+    [self updateSelectedColorBarButtonItemByColor: self.selectedColor];
 }
 
 @end

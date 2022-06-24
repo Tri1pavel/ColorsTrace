@@ -22,8 +22,8 @@
     [self updateSelectedColorBarButtonItemByColor: nil];
         
     self.handler = [[ColorsTraceHandler alloc]
-                    initWithCanvas: self.colorView
-                    withColorButtons: self.colorButtons
+                    initWithCanvas:self.colorView
+                    withColorButtons:self.colorButtons
                     withColorWasChangedHandler:^(UIColor *color) {
         [self updateSelectedColorBarButtonItemByColor: color];
     }];

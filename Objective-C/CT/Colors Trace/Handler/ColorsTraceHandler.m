@@ -51,7 +51,7 @@
         CGPoint location = [gesture locationInView:self.canvas];
         UIColor *color = self.selectedColor;
         // Add view at location on canvas with specific color
-        [self addViewAt: location withColor: color];
+        [self addViewAt:location withColor:color];
     }
 }
 

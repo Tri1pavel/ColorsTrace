@@ -15,6 +15,7 @@
 		33EA0C0528650E6F007EF481 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33EA0C0328650E6F007EF481 /* LaunchScreen.storyboard */; };
 		33EA0C0828650E6F007EF481 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EA0C0728650E6F007EF481 /* main.m */; };
 		33EA0C192865B7B0007EF481 /* ColorsTraceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EA0C182865B7B0007EF481 /* ColorsTraceHandler.m */; };
+		33EA0C1E2865FBB7007EF481 /* Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EA0C1D2865FBB7007EF481 /* Stack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,9 @@
 		33EA0C0728650E6F007EF481 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		33EA0C112865B55C007EF481 /* ColorsTraceHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorsTraceHandler.h; sourceTree = "<group>"; };
 		33EA0C182865B7B0007EF481 /* ColorsTraceHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorsTraceHandler.m; sourceTree = "<group>"; };
+		33EA0C1B2865FA5F007EF481 /* StackInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StackInterface.h; sourceTree = "<group>"; };
+		33EA0C1C2865FBB7007EF481 /* Stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
+		33EA0C1D2865FBB7007EF481 /* Stack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Stack.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,7 @@
 				33EA0BF628650E6D007EF481 /* AppDelegate.m */,
 				33EA0BF828650E6D007EF481 /* SceneDelegate.h */,
 				33EA0BF928650E6D007EF481 /* SceneDelegate.m */,
+				33EA0C1A2865FA3F007EF481 /* Data Structure */,
 				33EA0C0E28650F7D007EF481 /* Colors Trace */,
 				33EA0BFE28650E6D007EF481 /* Main.storyboard */,
 				33EA0C0128650E6F007EF481 /* Assets.xcassets */,
@@ -103,6 +108,16 @@
 				33EA0C182865B7B0007EF481 /* ColorsTraceHandler.m */,
 			);
 			path = Handler;
+			sourceTree = "<group>";
+		};
+		33EA0C1A2865FA3F007EF481 /* Data Structure */ = {
+			isa = PBXGroup;
+			children = (
+				33EA0C1B2865FA5F007EF481 /* StackInterface.h */,
+				33EA0C1C2865FBB7007EF481 /* Stack.h */,
+				33EA0C1D2865FBB7007EF481 /* Stack.m */,
+			);
+			path = "Data Structure";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +192,7 @@
 			files = (
 				33EA0BFD28650E6D007EF481 /* ColorsTraceViewController.m in Sources */,
 				33EA0BF728650E6D007EF481 /* AppDelegate.m in Sources */,
+				33EA0C1E2865FBB7007EF481 /* Stack.m in Sources */,
 				33EA0C0828650E6F007EF481 /* main.m in Sources */,
 				33EA0BFA28650E6D007EF481 /* SceneDelegate.m in Sources */,
 				33EA0C192865B7B0007EF481 /* ColorsTraceHandler.m in Sources */,

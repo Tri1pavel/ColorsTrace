@@ -84,6 +84,7 @@
                         <barButtonItem key="leftBarButtonItem" enabled="NO" title="Selected color" id="Wed-Y4-bdt"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="colorView" destination="let-g0-tgH" id="tBR-Tc-k0g"/>
                         <outletCollection property="colorButtons" destination="Ovk-IZ-Ak9" id="fW8-7x-xcq"/>
                         <outletCollection property="colorButtons" destination="HEj-wu-z7h" id="Zrt-wk-g7Q"/>
                         <outletCollection property="colorButtons" destination="Whh-Ns-RCN" id="UqP-qT-5A7"/>

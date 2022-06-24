@@ -16,12 +16,13 @@
 /**
  *  Initialization for ColorsTraceHandler.
  *
+ *  @param canvas UIView for adding selected color view by tap.
  *  @param colorButtons Array of UIButton, that holds color buttons for change selected color.
  *  @param colorWasChangedHandler This block will be invoked every time when color was changed by switching between color buttons.
  */
-- (id) initWithColorButtons:(NSArray *) colorButtons withColorWasChangedHandler:(void (^)(UIColor *color)) colorWasChangedHandler;
+- (id)initWithCanvas:(UIView *) canvas withColorButtons:(NSArray *) colorButtons withColorWasChangedHandler:(void (^)(UIColor *color)) colorWasChangedHandler;
 /**
  *  Call this method to notify the handler that color button was tapped by user.
  */
-- (void) colorWasChanged:(UIButton *)sender;
+- (void)colorWasChanged:(UIButton *)sender;
 @end

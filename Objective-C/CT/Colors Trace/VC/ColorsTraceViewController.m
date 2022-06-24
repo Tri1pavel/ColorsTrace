@@ -9,8 +9,8 @@
 #import "ColorsTraceHandler.h"
 
 @interface ColorsTraceViewController ()
+@property (strong, nonatomic) IBOutlet UIView *colorView;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *colorButtons;
-@property (strong, nonatomic) UIColor *selectedColor;
 @property (strong, nonatomic) ColorsTraceHandler *handler;
 @end
 
@@ -21,7 +21,10 @@
     // Do any additional setup after loading the view.
     [self updateSelectedColorBarButtonItemByColor: nil];
         
-    self.handler = [[ColorsTraceHandler alloc] initWithColorButtons:self.colorButtons withColorWasChangedHandler:^(UIColor *color) {
+    self.handler = [[ColorsTraceHandler alloc]
+                    initWithCanvas: self.colorView
+                    withColorButtons: self.colorButtons
+                    withColorWasChangedHandler:^(UIColor *color) {
         [self updateSelectedColorBarButtonItemByColor: color];
     }];
 }

@@ -6,10 +6,12 @@
 //
 
 #import "ColorsTraceViewController.h"
+#import "ColorsTraceHandler.h"
 
 @interface ColorsTraceViewController ()
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *colorButtons;
 @property (strong, nonatomic) UIColor *selectedColor;
+@property (strong, nonatomic) ColorsTraceHandler *handler;
 @end
 
 @implementation ColorsTraceViewController
@@ -18,6 +20,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self updateSelectedColorBarButtonItemByColor: nil];
+        
+    self.handler = [[ColorsTraceHandler alloc] initWithColorButtons:self.colorButtons withColorWasChangedHandler:^(UIColor *color) {
+        [self updateSelectedColorBarButtonItemByColor: color];
+    }];
 }
 
 - (void)updateSelectedColorBarButtonItemByColor:(UIColor *) color {
@@ -35,21 +41,7 @@
 }
 
 - (IBAction)buttonWasTapped:(UIButton *)sender {
-    if (sender.isSelected) {
-        // Deselect button that previously was selected
-        sender.selected = !sender.selected;
-    } else {
-        // Deselect all buttons
-        for (id color in self.colorButtons) {
-            [color setSelected:false];
-        }
-        // Select the button that was tapped
-        sender.selected = !sender.selected;
-    }
-
-    self.selectedColor = sender.isSelected ? sender.backgroundColor : nil;
-    
-    [self updateSelectedColorBarButtonItemByColor: self.selectedColor];
+    [self.handler colorWasChanged: sender];
 }
 
 @end

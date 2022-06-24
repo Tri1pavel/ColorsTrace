@@ -14,6 +14,7 @@
 		33EA0C0228650E6F007EF481 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33EA0C0128650E6F007EF481 /* Assets.xcassets */; };
 		33EA0C0528650E6F007EF481 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33EA0C0328650E6F007EF481 /* LaunchScreen.storyboard */; };
 		33EA0C0828650E6F007EF481 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EA0C0728650E6F007EF481 /* main.m */; };
+		33EA0C192865B7B0007EF481 /* ColorsTraceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EA0C182865B7B0007EF481 /* ColorsTraceHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		33EA0C0428650E6F007EF481 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		33EA0C0628650E6F007EF481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33EA0C0728650E6F007EF481 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		33EA0C112865B55C007EF481 /* ColorsTraceHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorsTraceHandler.h; sourceTree = "<group>"; };
+		33EA0C182865B7B0007EF481 /* ColorsTraceHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorsTraceHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,7 @@
 		33EA0C0E28650F7D007EF481 /* Colors Trace */ = {
 			isa = PBXGroup;
 			children = (
+				33EA0C102865B51A007EF481 /* Handler */,
 				33EA0C0F28650F91007EF481 /* VC */,
 			);
 			path = "Colors Trace";
@@ -90,6 +94,15 @@
 				33EA0BFC28650E6D007EF481 /* ColorsTraceViewController.m */,
 			);
 			path = VC;
+			sourceTree = "<group>";
+		};
+		33EA0C102865B51A007EF481 /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				33EA0C112865B55C007EF481 /* ColorsTraceHandler.h */,
+				33EA0C182865B7B0007EF481 /* ColorsTraceHandler.m */,
+			);
+			path = Handler;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +179,7 @@
 				33EA0BF728650E6D007EF481 /* AppDelegate.m in Sources */,
 				33EA0C0828650E6F007EF481 /* main.m in Sources */,
 				33EA0BFA28650E6D007EF481 /* SceneDelegate.m in Sources */,
+				33EA0C192865B7B0007EF481 /* ColorsTraceHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

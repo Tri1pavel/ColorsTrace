@@ -12,6 +12,7 @@
 @property (strong, nonatomic) IBOutlet UIView *colorView;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *colorButtons;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *undoBarButtonItem;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *redoBarButtonItem;
 @property (strong, nonatomic) ColorsTraceHandler *handler;
 @end
 
@@ -30,8 +31,10 @@
     }
                     withUndoStackWasChangedHandler:^(BOOL isEnabled) {
         [self.undoBarButtonItem setEnabled: isEnabled];
+    }
+                    withRedoStackWasChangedHandler:^(BOOL isEnabled) {
+        [self.redoBarButtonItem setEnabled: isEnabled];
     }];
-
 }
 
 - (void)updateSelectedColorBarButtonItemByColor:(UIColor *) color {
@@ -54,6 +57,10 @@
 
 - (IBAction)undoPressed:(UIBarButtonItem *)sender {
     [self.handler undo];
+}
+
+- (IBAction)redoPressed:(UIBarButtonItem *)sender {
+    [self.handler redo];
 }
 
 @end

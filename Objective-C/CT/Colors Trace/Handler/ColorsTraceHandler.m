@@ -13,38 +13,46 @@
 @property (strong, nonatomic) NSArray *colorButtons;
 @property (nonatomic, copy) void (^colorWasChanged)(UIColor *color);
 @property (nonatomic, copy) void (^undoStackWasChanged)(BOOL isEnabled);
+@property (nonatomic, copy) void (^redoStackWasChanged)(BOOL isEnabled);
 
 @property (strong, nonatomic) UIColor *selectedColor;
 @property (strong, nonatomic) NSMutableDictionary *hashColorDictionary;
 @property (strong, nonatomic) Stack *undoStack;
+@property (strong, nonatomic) Stack *redoStack;
 @end
 
 @implementation ColorsTraceHandler
 
-// Override the setter for selectedColor property
-// and execute the closure block colorWasChanged(UIColor *color)
+// Override Setters:
 - (void)setSelectedColor:(UIColor *)color {
     _selectedColor = color;
     self.colorWasChanged(color);
 }
 
+- (void)setCanvas:(UIView *)canvas {
+    _canvas = canvas;
+    [self addTapGestureRecognizerToCanvas];
+}
+
 - (id)initWithCanvas:(UIView *) canvas
     withColorButtons:(NSArray *) colorButtons
     withColorWasChangedHandler:(void (^)(UIColor *color)) colorWasChangedHandler
-    withUndoStackWasChangedHandler:(void (^)(BOOL isEnabled)) undoStackWasChangedHandler {
+    withUndoStackWasChangedHandler:(void (^)(BOOL isEnabled)) undoStackWasChangedHandler
+    withRedoStackWasChangedHandler:(void (^)(BOOL isEnabled)) redoStackWasChangedHandler {
     self = [super init];
     if (self) {
         self.canvas = canvas;
         self.colorButtons = colorButtons;
         self.colorWasChanged = colorWasChangedHandler;
         self.undoStackWasChanged = undoStackWasChangedHandler;
+        self.redoStackWasChanged = redoStackWasChangedHandler;
         
         // Init dictionary for hash colors
         self.hashColorDictionary = [[NSMutableDictionary alloc] init];
         // Init undo stack
         self.undoStack = [[Stack alloc] init];
-        
-        [self addTapGestureRecognizerToCanvas];
+        // Init undo stack
+        self.redoStack = [[Stack alloc] init];
     }
     return self;
 }
@@ -77,14 +85,14 @@
     [view setTextColor:[UIColor whiteColor]];
     [view setTextAlignment:NSTextAlignmentCenter];
     // Update hash for added color
-    int current = [self updateHashWithColor:color withAscending:TRUE];
+    int current = [self updateHashWithColor:color withAscending:true];
     [view setText:[NSString stringWithFormat:@"%i",current]];
     // Add to canvas
     [self.canvas addSubview:view];
     // Add view to "undo" stack
     [self.undoStack push:view];
     // Undo completion handler
-    BOOL isEnabled = [self.undoStack.items count] == 0 ? FALSE : TRUE;
+    BOOL isEnabled = [self.undoStack.items count] == 0 ? false : true;
     self.undoStackWasChanged(isEnabled);
 }
 
@@ -114,12 +122,30 @@
 - (void)undo {
     UIView *view = [self.undoStack pop];
     // Undo completion handler
-    BOOL isUndoEnabled = [self.undoStack.items count] == 0 ? FALSE : TRUE;
+    BOOL isUndoEnabled = [self.undoStack.items count] == 0 ? false : true;
     self.undoStackWasChanged(isUndoEnabled);
     // Update hash for removed color
-    [self updateHashWithColor: view.backgroundColor withAscending: FALSE];
+    [self updateHashWithColor: view.backgroundColor withAscending: false];
     // Remove view from canvas
     [view removeFromSuperview];
+    // Add view to "redo" stack
+    [self.redoStack push:view];
+    // Redo completion handler
+    BOOL isRedoEnabled = [self.redoStack.items count] == 0 ? false : true;
+    self.redoStackWasChanged(isRedoEnabled);
+}
+
+- (void)redo {
+    UIView *view = [self.redoStack pop];
+    // Redo completion handler
+    BOOL isRedoEnabled = [self.redoStack.items count] == 0 ? false : true;
+    self.redoStackWasChanged(isRedoEnabled);
+    // Get location from restored view
+    CGPoint location = CGPointMake(view.frame.origin.x + view.frame.size.width * 0.5, view.frame.origin.y + view.frame.size.height * 0.5);
+    // Get color from restored view
+    UIColor *color = view.backgroundColor;
+    // Add restored view at location on canvas with specific color
+    [self addViewAt:location withColor:color];
 }
 
 @end

@@ -13,8 +13,10 @@
  *  Handle tap gesture to add *UIView* on canvas.
  *  Handle event when color was changed.
  *  Handle event when undo stack of *UIView* was changed.
+ *  Handle event when redo stack of *UIView* was changed.
  */
 @interface ColorsTraceHandler: NSObject
+
 /**
  *  Initialization for ColorsTraceHandler.
  *
@@ -22,14 +24,23 @@
  *  @param colorButtons Array of UIButton, that holds color buttons for change selected color.
  *  @param colorWasChangedHandler This block will be invoked every time when color was changed by switching between color buttons.
  *  @param undoStackWasChangedHandler This block will be invoked every time when undo stack was changed.
+ *  @param redoStackWasChangedHandler This block will be invoked every time when redo stack was changed.
  */
-- (id)initWithCanvas:(UIView *) canvas withColorButtons:(NSArray *) colorButtons withColorWasChangedHandler:(void (^)(UIColor *color)) colorWasChangedHandler withUndoStackWasChangedHandler:(void (^)(BOOL isEnabled)) undoStackWasChangedHandler;
+- (id)initWithCanvas:(UIView *) canvas withColorButtons:(NSArray *) colorButtons withColorWasChangedHandler:(void (^)(UIColor *color)) colorWasChangedHandler withUndoStackWasChangedHandler:(void (^)(BOOL isEnabled)) undoStackWasChangedHandler withRedoStackWasChangedHandler:(void (^)(BOOL isEnabled)) redoStackWasChangedHandler;
+
 /**
  *  Call this method to notify the handler that color button was tapped by user.
  */
 - (void)colorWasChanged:(UIButton *)sender;
+
 /**
- *  Call this method to notify the handler that undo button was tapped by user.
+ *  Call this method to notify the handler that undo item bar button was tapped by user.
  */
 - (void)undo;
+
+/**
+ *  Call this method to notify the handler that redo item bar button was tapped by user.
+ */
+- (void)redo;
+
 @end

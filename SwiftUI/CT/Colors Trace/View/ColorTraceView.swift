@@ -12,10 +12,22 @@ struct ColorTraceView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack(spacing: 0) {
-                ColorCanvasView()
-                ColorItemsView(size: geometry.size.width / CGFloat(model.items.count))
-                Divider()
+            NavigationView {
+                VStack(spacing: 0) {
+                    ColorCanvasView()
+                    ColorItemsView(size: geometry.size.width / CGFloat(model.items.count))
+                    Divider()
+                }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        if (model.isSelected) {
+                            Circle()
+                                .fill(Color(model.selectedItem!.type.name))
+                                .frame(width: 32.0, height: 32.0)
+                        }
+                    }
+                }
+                .navigationBarTitleDisplayMode(.inline)
             }
         }
     }

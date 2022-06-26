@@ -20,6 +20,10 @@ class ColorTraceViewModel: ObservableObject {
     var selectedItem: ColorItem? {
         items.filter {$0.isSelected == true}.first
     }
+    
+    var isSelected: Bool {
+        selectedItem == nil ? false : true
+    }
         
     private func deselectAll() {
         items.indices.forEach {items[$0].isSelected = false}

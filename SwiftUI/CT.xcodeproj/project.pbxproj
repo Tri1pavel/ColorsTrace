@@ -15,6 +15,7 @@
 		33EA0C4428676E2C007EF481 /* ColorButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EA0C4328676E2C007EF481 /* ColorButtonItem.swift */; };
 		33EA0C4628676F57007EF481 /* ColorItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EA0C4528676F57007EF481 /* ColorItemsView.swift */; };
 		33EA0C4728685257007EF481 /* ColorTraceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EA0C2D2867159F007EF481 /* ColorTraceView.swift */; };
+		33EA0C49286859D5007EF481 /* ColorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EA0C48286859D5007EF481 /* ColorItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		33EA0C4028673676007EF481 /* ColorTraceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTraceViewModel.swift; sourceTree = "<group>"; };
 		33EA0C4328676E2C007EF481 /* ColorButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorButtonItem.swift; sourceTree = "<group>"; };
 		33EA0C4528676F57007EF481 /* ColorItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorItemsView.swift; sourceTree = "<group>"; };
+		33EA0C48286859D5007EF481 /* ColorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				33EA0C4328676E2C007EF481 /* ColorButtonItem.swift */,
+				33EA0C48286859D5007EF481 /* ColorItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 			files = (
 				33EA0C4728685257007EF481 /* ColorTraceView.swift in Sources */,
 				33EA0C4128673676007EF481 /* ColorTraceViewModel.swift in Sources */,
+				33EA0C49286859D5007EF481 /* ColorItem.swift in Sources */,
 				33EA0C2C2867159F007EF481 /* CTApp.swift in Sources */,
 				33EA0C4428676E2C007EF481 /* ColorButtonItem.swift in Sources */,
 				33EA0C3E286717AE007EF481 /* ColorCanvasView.swift in Sources */,
@@ -321,6 +325,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,7 +335,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -348,6 +353,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -357,7 +363,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

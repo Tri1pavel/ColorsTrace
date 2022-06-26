@@ -6,8 +6,17 @@
 //
 
 import Foundation
+import CoreGraphics
 
 class ColorTraceViewModel: ObservableObject {
+    
+    @Published
+    private(set) var items: [ColorItem] = [
+        ColorItem(color: .red, offset: CGPoint(x: 10.0, y: 20.0)),
+        ColorItem(color: .green, offset: CGPoint(x: 100.0, y: 60.0)),
+        ColorItem(color: .orange, offset: CGPoint(x: 150.0, y: 200.0)),
+        ColorItem(color: .blue, offset: CGPoint(x: 70.0, y: 120.0))
+    ]
     
     @Published
     private(set) var colors: [ColorButtonItem] = [
@@ -24,7 +33,11 @@ class ColorTraceViewModel: ObservableObject {
     var isSelected: Bool {
         selectedColor == nil ? false : true
     }
-        
+    
+    private func addItem(_ item: ColorItem) {
+        items.append(item)
+    }
+    
     private func deselectAll() {
         colors.indices.forEach {colors[$0].isSelected = false}
     }
@@ -53,6 +66,15 @@ extension ColorTraceViewModel {
         deselectAll()
         // Select the item that was tapped
         colors[index].wasSelected()
+    }
+    
+    func wasTapped(at location: CGPoint) {
+        guard let selectedColor = self.selectedColor else { return }
+        
+        let offset = CGPoint(x: location.x - ColorItem.size * 0.5,
+                             y: location.y - ColorItem.size * 0.5)
+        let item = ColorItem(color: selectedColor.type, offset: offset)
+        self.addItem(item)
     }
     
 }

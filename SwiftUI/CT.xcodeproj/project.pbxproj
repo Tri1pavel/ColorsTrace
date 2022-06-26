@@ -16,6 +16,7 @@
 		33EA0C4628676F57007EF481 /* ColorItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EA0C4528676F57007EF481 /* ColorItemsView.swift */; };
 		33EA0C4728685257007EF481 /* ColorTraceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EA0C2D2867159F007EF481 /* ColorTraceView.swift */; };
 		33EA0C49286859D5007EF481 /* ColorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EA0C48286859D5007EF481 /* ColorItem.swift */; };
+		33EA0C4D2868A2CB007EF481 /* StackInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EA0C4C2868A2CB007EF481 /* StackInterface.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		33EA0C4328676E2C007EF481 /* ColorButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorButtonItem.swift; sourceTree = "<group>"; };
 		33EA0C4528676F57007EF481 /* ColorItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorItemsView.swift; sourceTree = "<group>"; };
 		33EA0C48286859D5007EF481 /* ColorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorItem.swift; sourceTree = "<group>"; };
+		33EA0C4C2868A2CB007EF481 /* StackInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackInterface.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 			children = (
 				33EA0C4328676E2C007EF481 /* ColorButtonItem.swift */,
 				33EA0C48286859D5007EF481 /* ColorItem.swift */,
+				33EA0C4C2868A2CB007EF481 /* StackInterface.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				33EA0C2C2867159F007EF481 /* CTApp.swift in Sources */,
 				33EA0C4428676E2C007EF481 /* ColorButtonItem.swift in Sources */,
 				33EA0C3E286717AE007EF481 /* ColorCanvasView.swift in Sources */,
+				33EA0C4D2868A2CB007EF481 /* StackInterface.swift in Sources */,
 				33EA0C4628676F57007EF481 /* ColorItemsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

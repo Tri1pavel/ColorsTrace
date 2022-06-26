@@ -26,6 +26,18 @@ struct ColorTraceView: View {
                                 .frame(width: 32.0, height: 32.0)
                         }
                     }
+                    
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        Button("Redo") {
+                            model.redoButtonWasTapped()
+                        }
+                        .disabled(model.redoStack.isEmpty)
+                        
+                        Button("Undo") {
+                            model.undoButtonWasTapped()
+                        }
+                        .disabled(model.undoStack.isEmpty)
+                    }
                 }
                 .navigationBarTitleDisplayMode(.inline)
             }

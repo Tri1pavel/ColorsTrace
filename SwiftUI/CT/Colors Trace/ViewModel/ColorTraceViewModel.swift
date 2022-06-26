@@ -11,13 +11,7 @@ import CoreGraphics
 class ColorTraceViewModel: ObservableObject {
     
     @Published
-    private(set) var items: [ColorItem] = [
-        ColorItem(color: .green, number: 1, offset: CGPoint(x: 100.0, y: 60.0)),
-        ColorItem(color: .orange, number: 1, offset: CGPoint(x: 150.0, y: 120.0)),
-        ColorItem(color: .blue, number: 1, offset: CGPoint(x: 70.0, y: 120.0)),
-        ColorItem(color: .orange, number: 2, offset: CGPoint(x: 250.0, y: 40.0)),
-        ColorItem(color: .orange, number: 3, offset: CGPoint(x: 270.0, y: 220.0)),
-    ]
+    private(set) var items: [ColorItem] = []
     
     @Published
     private(set) var colors: [ColorButtonItem] = [
@@ -26,6 +20,12 @@ class ColorTraceViewModel: ObservableObject {
         ColorButtonItem(type: .blue),
         ColorButtonItem(type: .red)
     ]
+    
+    @Published
+    private(set) var undoStack: Stack = Stack<ColorItem>()
+    
+    @Published
+    private(set) var redoStack: Stack = Stack<ColorItem>()
     
     // *** colors variables
     var selectedColor: ColorButtonItem? {
@@ -53,6 +53,10 @@ class ColorTraceViewModel: ObservableObject {
         items.append(item)
     }
     
+    private func removeLastItem() {
+        items.removeLast()
+    }
+    
     private func getItemNumber(for color: ColorButtonItemType) -> Int {
         items.filter {$0.color == color}.count + 1
     }
@@ -77,7 +81,7 @@ extension ColorTraceViewModel {
     
     func colorCanvasWasTapped(at location: CGPoint) {
         guard let selectedColor = self.selectedColor else { return }
-        
+
         let offset = CGPoint(x: location.x - ColorItem.size * 0.5,
                              y: location.y - ColorItem.size * 0.5)
         let color = selectedColor.type
@@ -86,6 +90,35 @@ extension ColorTraceViewModel {
                              number: number,
                              offset: offset)
         self.addItem(item)
+        
+        self.undoStack.push(item)
+    }
+    
+    func undoButtonWasTapped() {
+        guard let item = self.undoStack.pop() else {
+            return
+        }
+        
+        self.redoStack.push(item)
+        
+        self.removeLastItem()
+    }
+    
+    func redoButtonWasTapped() {
+        guard let popped = self.redoStack.pop() else {
+            return
+        }
+
+        let offset = CGPoint(x: popped.offset.x,
+                             y: popped.offset.y)
+        let color = popped.color
+        let number = getItemNumber(for: color)
+        let item = ColorItem(color: color,
+                             number: number,
+                             offset: offset)
+        self.addItem(item)
+        
+        self.undoStack.push(item)
     }
     
 }

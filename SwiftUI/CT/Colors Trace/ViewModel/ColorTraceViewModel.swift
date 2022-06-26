@@ -10,27 +10,27 @@ import Foundation
 class ColorTraceViewModel: ObservableObject {
     
     @Published
-    private(set) var items: [ColorItem] = [
-        ColorItem(type: .orange),
-        ColorItem(type: .green),
-        ColorItem(type: .blue),
-        ColorItem(type: .red)
+    private(set) var colors: [ColorButtonItem] = [
+        ColorButtonItem(type: .orange),
+        ColorButtonItem(type: .green),
+        ColorButtonItem(type: .blue),
+        ColorButtonItem(type: .red)
     ]
     
-    var selectedItem: ColorItem? {
-        items.filter {$0.isSelected == true}.first
+    var selectedColor: ColorButtonItem? {
+        colors.filter {$0.isSelected == true}.first
     }
     
     var isSelected: Bool {
-        selectedItem == nil ? false : true
+        selectedColor == nil ? false : true
     }
         
     private func deselectAll() {
-        items.indices.forEach {items[$0].isSelected = false}
+        colors.indices.forEach {colors[$0].isSelected = false}
     }
 
-    private func index(for item: ColorItem) -> Int? {
-        guard let index = (items.firstIndex {$0.id == item.id}) else {
+    private func index(for color: ColorButtonItem) -> Int? {
+        guard let index = (colors.firstIndex {$0.id == color.id}) else {
             return nil
         }
         return index
@@ -40,19 +40,19 @@ class ColorTraceViewModel: ObservableObject {
 
 extension ColorTraceViewModel {
     
-    func colorWasChanged(for item: ColorItem) {
-        guard let index = index(for: item) else {
+    func colorWasChanged(for color: ColorButtonItem) {
+        guard let index = index(for: color) else {
             return
         }
-        guard !items[index].isSelected else {
+        guard !colors[index].isSelected else {
             // Deselect item that previously was selected
-            items[index].wasSelected()
+            colors[index].wasSelected()
             return
         }
         // Deselect all items
         deselectAll()
         // Select the item that was tapped
-        items[index].wasSelected()
+        colors[index].wasSelected()
     }
     
 }

@@ -13,15 +13,15 @@ struct ColorItemsView: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            ForEach(model.items) { item in
+            ForEach(model.colors) { color in
                 Button {
-                    model.colorWasChanged(for: item)
+                    model.colorWasChanged(for: color)
                 } label: {
                     Rectangle()
-                        .fill(Color(item.type.name))
+                        .fill(Color(color.type.name))
                         .frame(width: size, height: size)
                         .overlay {
-                            if item.isSelected {
+                            if color.isSelected {
                                 Color(white: 0, opacity: 0.25)
                             }
                         }

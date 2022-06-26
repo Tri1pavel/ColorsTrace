@@ -1,5 +1,5 @@
 //
-//  ColorItem.swift
+//  ColorButtonItem.swift
 //  CT
 //
 //  Created by Development on 25.06.2022.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct ColorItem: Identifiable {
+struct ColorButtonItem: Identifiable {
     let id = UUID()
-    let type: ColorItemType
+    let type: ColorButtonItemType
     var isSelected: Bool = false
     
     mutating func wasSelected() {
@@ -17,7 +17,7 @@ struct ColorItem: Identifiable {
     }
 }
 
-enum ColorItemType : String {
+enum ColorButtonItemType : String {
     case orange, green, blue, red
 
     var name: String {

@@ -34,8 +34,12 @@ protocol StackInterface {
 struct Stack<Element>: StackInterface {
     typealias Element = Element
     
-    private(set) var items: [Element] = []
+    private var items: [Element] = []
     
+    var isEmpty: Bool {
+        items.isEmpty
+    }
+ 
     init() {}
     init(items: [Element]) {
         self.items = items

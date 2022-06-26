@@ -86,7 +86,7 @@ class ColorsTraceHandler {
         // Add view to "undo" stack
         self.undoStack.push(view)
         // Undo completion handler
-        let isEnabled = self.undoStack.items.isEmpty ? false : true
+        let isEnabled = self.undoStack.isEmpty ? false : true
         self.undoWasChangedCompletionHandler(isEnabled)
     }
     
@@ -126,7 +126,7 @@ extension ColorsTraceHandler {
             return
         }
         // Undo completion handler
-        let isUndoEnabled = self.undoStack.items.isEmpty ? false : true
+        let isUndoEnabled = self.undoStack.isEmpty ? false : true
         self.undoWasChangedCompletionHandler(isUndoEnabled)
         // Update hash for removed color
         self.updateHash(color: view.backgroundColor, ascending: false)
@@ -135,7 +135,7 @@ extension ColorsTraceHandler {
         // Add view to "redo" stack
         redoStack.push(view)
         // Redo completion handler
-        let isRedoEnabled = self.redoStack.items.isEmpty ? false : true
+        let isRedoEnabled = self.redoStack.isEmpty ? false : true
         self.redoWasChangedCompletionHandler(isRedoEnabled)
     }
     
@@ -144,7 +144,7 @@ extension ColorsTraceHandler {
             return
         }
         // Redo completion handler
-        let isRedoEnabled = self.redoStack.items.isEmpty ? false : true
+        let isRedoEnabled = self.redoStack.isEmpty ? false : true
         self.redoWasChangedCompletionHandler(isRedoEnabled)
         // Get location from restored view on canvas
         let location = CGPoint(x: view.frame.origin.x + view.frame.width * 0.5,

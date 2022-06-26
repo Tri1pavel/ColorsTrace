@@ -2,7 +2,7 @@
 //  StackInterface.swift
 //  CT
 //
-//  Created by Development on 23.06.2022.
+//  Created by Development on 26.06.2022.
 //
 
 import Foundation
@@ -39,7 +39,7 @@ struct Stack<Element>: StackInterface {
     var isEmpty: Bool {
         items.isEmpty
     }
- 
+    
     init() {}
     init(items: [Element]) {
         self.items = items
@@ -57,4 +57,3 @@ struct Stack<Element>: StackInterface {
         items.last
     }
 }
-

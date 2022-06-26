@@ -12,10 +12,11 @@ class ColorTraceViewModel: ObservableObject {
     
     @Published
     private(set) var items: [ColorItem] = [
-        ColorItem(color: .red, offset: CGPoint(x: 10.0, y: 20.0)),
-        ColorItem(color: .green, offset: CGPoint(x: 100.0, y: 60.0)),
-        ColorItem(color: .orange, offset: CGPoint(x: 150.0, y: 200.0)),
-        ColorItem(color: .blue, offset: CGPoint(x: 70.0, y: 120.0))
+        ColorItem(color: .green, number: 1, offset: CGPoint(x: 100.0, y: 60.0)),
+        ColorItem(color: .orange, number: 1, offset: CGPoint(x: 150.0, y: 120.0)),
+        ColorItem(color: .blue, number: 1, offset: CGPoint(x: 70.0, y: 120.0)),
+        ColorItem(color: .orange, number: 2, offset: CGPoint(x: 250.0, y: 40.0)),
+        ColorItem(color: .orange, number: 3, offset: CGPoint(x: 270.0, y: 220.0)),
     ]
     
     @Published
@@ -26,6 +27,7 @@ class ColorTraceViewModel: ObservableObject {
         ColorButtonItem(type: .red)
     ]
     
+    // *** colors variables
     var selectedColor: ColorButtonItem? {
         colors.filter {$0.isSelected == true}.first
     }
@@ -33,11 +35,8 @@ class ColorTraceViewModel: ObservableObject {
     var isSelected: Bool {
         selectedColor == nil ? false : true
     }
-    
-    private func addItem(_ item: ColorItem) {
-        items.append(item)
-    }
-    
+        
+    // *** colors methods
     private func deselectAll() {
         colors.indices.forEach {colors[$0].isSelected = false}
     }
@@ -49,11 +48,19 @@ class ColorTraceViewModel: ObservableObject {
         return index
     }
     
+    // *** items methods
+    private func addItem(_ item: ColorItem) {
+        items.append(item)
+    }
+    
+    private func getItemNumber(for color: ColorButtonItemType) -> Int {
+        items.filter {$0.color == color}.count + 1
+    }
 }
 
 extension ColorTraceViewModel {
     
-    func colorWasChanged(for color: ColorButtonItem) {
+    func colorButtonWasTapped(for color: ColorButtonItem) {
         guard let index = index(for: color) else {
             return
         }
@@ -68,12 +75,16 @@ extension ColorTraceViewModel {
         colors[index].wasSelected()
     }
     
-    func wasTapped(at location: CGPoint) {
+    func colorCanvasWasTapped(at location: CGPoint) {
         guard let selectedColor = self.selectedColor else { return }
         
         let offset = CGPoint(x: location.x - ColorItem.size * 0.5,
                              y: location.y - ColorItem.size * 0.5)
-        let item = ColorItem(color: selectedColor.type, offset: offset)
+        let color = selectedColor.type
+        let number = getItemNumber(for: color)
+        let item = ColorItem(color: color,
+                             number: number,
+                             offset: offset)
         self.addItem(item)
     }
     

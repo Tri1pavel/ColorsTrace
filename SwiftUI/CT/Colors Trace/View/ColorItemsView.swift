@@ -18,7 +18,7 @@ struct ColorItemsView: View {
             HStack(spacing: 0) {
                 ForEach(model.colors) { color in
                     Button {
-                        model.colorWasChanged(for: color)
+                        model.colorButtonWasTapped(for: color)
                     } label: {
                         Rectangle()
                             .fill(Color(color.type.name))

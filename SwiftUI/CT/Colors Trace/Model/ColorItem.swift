@@ -13,7 +13,19 @@ struct ColorItem: Identifiable {
     
     let id = UUID()
     let color: ColorButtonItemType
+    let number: Int
     let offset: CGPoint
-    let size: CGSize = CGSize(width: ColorItem.size,
-                              height: ColorItem.size)
+    let size: CGSize
+    
+    init(color: ColorButtonItemType,
+         number: Int,
+         offset: CGPoint,
+         size: CGSize = CGSize(width: ColorItem.size,
+                               height: ColorItem.size)
+    ) {
+        self.color = color
+        self.number = number
+        self.offset = offset
+        self.size = size
+    }
 }

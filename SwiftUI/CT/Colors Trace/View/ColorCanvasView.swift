@@ -17,15 +17,24 @@ struct ColorCanvasView: View {
                     .fill(Color("background"))
                 
                 ForEach(model.items) { item in
-                    Circle()
-                        .fill(Color(item.color.name))
-                        .frame(width: item.size.width, height: item.size.height)
-                        .padding(.leading, item.offset.x)
-                        .padding(.top, item.offset.y)
+                    Group {
+                        Circle()
+                            .fill(Color(item.color.name))
+                            
+                        Text("\(item.number)")
+                            .foregroundColor(.white)
+                            .font(Font.system(size: 20.0))
+                            .fontWeight(.bold)
+                            .multilineTextAlignment(.center)
+                            .lineLimit(1)
+                    }
+                    .frame(width: item.size.width, height: item.size.height)
+                    .padding(.leading, item.offset.x)
+                    .padding(.top, item.offset.y)
                 }
             }
             .onTapGesture { location in
-                model.wasTapped(at :location)
+                model.colorCanvasWasTapped(at :location)
             }
             .clipped()
         }

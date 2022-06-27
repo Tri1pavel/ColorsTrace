@@ -29,8 +29,7 @@ struct ColorCanvasView: View {
                             .lineLimit(1)
                     }
                     .frame(width: item.size.width, height: item.size.height)
-                    .padding(.leading, item.offset.x)
-                    .padding(.top, item.offset.y)
+                    .position(x: item.offset.x + item.size.width * 0.5, y: item.offset.y + item.size.height * 0.5)
                 }
             }
             .onTapGesture { location in

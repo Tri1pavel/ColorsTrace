@@ -27,13 +27,16 @@
                     initWithCanvas:self.colorView
                     withColorButtons:self.colorButtons
                     withColorWasChangedHandler:^(UIColor *color) {
-        [self updateSelectedColorBarButtonItemByColor: color];
+        __weak typeof(self) weakSelf = self;
+        [weakSelf updateSelectedColorBarButtonItemByColor: color];
     }
                     withUndoStackWasChangedHandler:^(BOOL isEnabled) {
-        [self.undoBarButtonItem setEnabled: isEnabled];
+        __weak typeof(self) weakSelf = self;
+        [weakSelf.undoBarButtonItem setEnabled: isEnabled];
     }
                     withRedoStackWasChangedHandler:^(BOOL isEnabled) {
-        [self.redoBarButtonItem setEnabled: isEnabled];
+        __weak typeof(self) weakSelf = self;
+        [weakSelf.redoBarButtonItem setEnabled: isEnabled];
     }];
 }
 

@@ -18,12 +18,12 @@ class ColorsTraceViewController: UIViewController {
         let handler = ColorsTraceHandler(
             canvas: colorView,
             colors: colorButtons,
-            colorWasChanged: { color in
-                self.updateSelectedColorBarButtonItem(with: color)
-            }, undoWasChanged: { isEnabled in
-                self.undoBarButtonItem.isEnabled = isEnabled
-            }, redoWasChanged: { isEnabled in
-                self.redoBarButtonItem.isEnabled = isEnabled
+            colorWasChanged: { [weak self] color in
+                self?.updateSelectedColorBarButtonItem(with: color)
+            }, undoWasChanged: { [weak self] isEnabled in
+                self?.undoBarButtonItem.isEnabled = isEnabled
+            }, redoWasChanged: { [weak self] isEnabled in
+                self?.redoBarButtonItem.isEnabled = isEnabled
             })
         return handler
     }()

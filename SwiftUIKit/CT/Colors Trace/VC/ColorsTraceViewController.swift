@@ -13,21 +13,23 @@ class ColorsTraceViewController: UIViewController {
     @IBOutlet var colorButtons: [UIButton]!
     @IBOutlet var undoBarButtonItem: UIBarButtonItem!
     @IBOutlet var redoBarButtonItem: UIBarButtonItem!
-    
-    private lazy var handler: ColorsTraceHandler? = {
-        let handler = ColorsTraceHandler(
-            canvas: colorView,
-            colors: colorButtons,
-            colorWasChanged: { [weak self] color in
-                self?.updateSelectedColorBarButtonItem(with: color)
-            }, undoWasChanged: { [weak self] isEnabled in
-                self?.undoBarButtonItem.isEnabled = isEnabled
-            }, redoWasChanged: { [weak self] isEnabled in
-                self?.redoBarButtonItem.isEnabled = isEnabled
-            })
+        
+    private lazy var colorSelectionHandler: ColorSelectionHandler? = {
+        let handler = ColorSelectionHandler(colors: colorButtons) { [weak self] color in
+            self?.updateSelectedColorBarButtonItem(with: color)
+            self?.colorCanvasHandler?.colorWasChanged(color)
+        }
         return handler
     }()
-       
+    
+    private lazy var colorCanvasHandler: ColorCanvasHandler? = {
+        let handler = ColorCanvasHandler(canvas: colorView) { [weak self] isUndoEnabled, isRedoEnabled in
+            self?.undoBarButtonItem.isEnabled = isUndoEnabled
+            self?.redoBarButtonItem.isEnabled = isRedoEnabled
+        }
+        return handler
+    }()
+           
     private func updateSelectedColorBarButtonItem(with color: UIColor? = nil) {
         var barButtonItem: UIBarButtonItem?
         
@@ -58,15 +60,15 @@ class ColorsTraceViewController: UIViewController {
 extension ColorsTraceViewController {
     
     @IBAction func buttonWasTapped(_ sender: UIButton) {
-        handler?.colorWasChanged(sender)
+        colorSelectionHandler?.wasChanged(sender)
     }
     
     @IBAction func undoPressed(_ sender: UIBarButtonItem) {
-        handler?.undo()
+        colorCanvasHandler?.undo()
     }
     
     @IBAction func redoPressed(_ sender: UIBarButtonItem) {
-        handler?.redo()
+        colorCanvasHandler?.redo()
     }
     
 }

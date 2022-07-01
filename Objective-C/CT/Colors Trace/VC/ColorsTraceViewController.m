@@ -6,14 +6,16 @@
 //
 
 #import "ColorsTraceViewController.h"
-#import "ColorsTraceHandler.h"
+#import "ColorSelectionHandler.h"
+#import "ColorCanvasHandler.h"
 
 @interface ColorsTraceViewController ()
 @property (strong, nonatomic) IBOutlet UIView *colorView;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *colorButtons;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *undoBarButtonItem;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *redoBarButtonItem;
-@property (strong, nonatomic) ColorsTraceHandler *handler;
+@property (strong, nonatomic) ColorSelectionHandler *colorSelectionHandler;
+@property (strong, nonatomic) ColorCanvasHandler *colorCanvasHandler;
 @end
 
 @implementation ColorsTraceViewController
@@ -22,21 +24,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self updateSelectedColorBarButtonItemByColor: nil];
-        
-    self.handler = [[ColorsTraceHandler alloc]
-                    initWithCanvas:self.colorView
-                    withColorButtons:self.colorButtons
-                    withColorWasChangedHandler:^(UIColor *color) {
+            
+    self.colorSelectionHandler = [[ColorSelectionHandler alloc] initWithColorButtons:self.colorButtons withColorWasChangedHandler:^(UIColor *color) {
         __weak typeof(self) weakSelf = self;
         [weakSelf updateSelectedColorBarButtonItemByColor: color];
-    }
-                    withUndoStackWasChangedHandler:^(BOOL isEnabled) {
+        [weakSelf.colorCanvasHandler colorWasChangedWith: color];
+    }];
+    
+    self.colorCanvasHandler = [[ColorCanvasHandler alloc] initWithCanvas:self.colorView withWasChangedHandler:^(BOOL isUndoEnabled, BOOL isRedoEnabled) {
         __weak typeof(self) weakSelf = self;
-        [weakSelf.undoBarButtonItem setEnabled: isEnabled];
-    }
-                    withRedoStackWasChangedHandler:^(BOOL isEnabled) {
-        __weak typeof(self) weakSelf = self;
-        [weakSelf.redoBarButtonItem setEnabled: isEnabled];
+        [weakSelf.undoBarButtonItem setEnabled: isUndoEnabled];
+        [weakSelf.redoBarButtonItem setEnabled: isRedoEnabled];
     }];
 }
 
@@ -55,15 +53,15 @@
 }
 
 - (IBAction)buttonWasTapped:(UIButton *)sender {
-    [self.handler colorWasChanged: sender];
+    [self.colorSelectionHandler colorWasChanged: sender];
 }
 
 - (IBAction)undoPressed:(UIBarButtonItem *)sender {
-    [self.handler undo];
+    [self.colorCanvasHandler undo];
 }
 
 - (IBAction)redoPressed:(UIBarButtonItem *)sender {
-    [self.handler redo];
+    [self.colorCanvasHandler redo];
 }
 
 @end

@@ -14,8 +14,9 @@
 		33EA0C0228650E6F007EF481 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33EA0C0128650E6F007EF481 /* Assets.xcassets */; };
 		33EA0C0528650E6F007EF481 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33EA0C0328650E6F007EF481 /* LaunchScreen.storyboard */; };
 		33EA0C0828650E6F007EF481 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EA0C0728650E6F007EF481 /* main.m */; };
-		33EA0C192865B7B0007EF481 /* ColorsTraceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EA0C182865B7B0007EF481 /* ColorsTraceHandler.m */; };
 		33EA0C1E2865FBB7007EF481 /* Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EA0C1D2865FBB7007EF481 /* Stack.m */; };
+		33EE1ECD286F18B7008D79AB /* ColorSelectionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EE1ECC286F18B7008D79AB /* ColorSelectionHandler.m */; };
+		33EE1ED1286F1AF3008D79AB /* ColorCanvasHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EE1ED0286F1AF3008D79AB /* ColorCanvasHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,11 +32,13 @@
 		33EA0C0428650E6F007EF481 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		33EA0C0628650E6F007EF481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33EA0C0728650E6F007EF481 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		33EA0C112865B55C007EF481 /* ColorsTraceHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorsTraceHandler.h; sourceTree = "<group>"; };
-		33EA0C182865B7B0007EF481 /* ColorsTraceHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorsTraceHandler.m; sourceTree = "<group>"; };
 		33EA0C1B2865FA5F007EF481 /* StackInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StackInterface.h; sourceTree = "<group>"; };
 		33EA0C1C2865FBB7007EF481 /* Stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
 		33EA0C1D2865FBB7007EF481 /* Stack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Stack.m; sourceTree = "<group>"; };
+		33EE1ECC286F18B7008D79AB /* ColorSelectionHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorSelectionHandler.m; sourceTree = "<group>"; };
+		33EE1ECE286F18D2008D79AB /* ColorSelectionHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorSelectionHandler.h; sourceTree = "<group>"; };
+		33EE1ECF286F1AE0008D79AB /* ColorCanvasHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorCanvasHandler.h; sourceTree = "<group>"; };
+		33EE1ED0286F1AF3008D79AB /* ColorCanvasHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorCanvasHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +89,7 @@
 		33EA0C0E28650F7D007EF481 /* Colors Trace */ = {
 			isa = PBXGroup;
 			children = (
-				33EA0C102865B51A007EF481 /* Handler */,
+				33EA0C102865B51A007EF481 /* Handlers */,
 				33EA0C0F28650F91007EF481 /* VC */,
 			);
 			path = "Colors Trace";
@@ -101,13 +104,15 @@
 			path = VC;
 			sourceTree = "<group>";
 		};
-		33EA0C102865B51A007EF481 /* Handler */ = {
+		33EA0C102865B51A007EF481 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
-				33EA0C112865B55C007EF481 /* ColorsTraceHandler.h */,
-				33EA0C182865B7B0007EF481 /* ColorsTraceHandler.m */,
+				33EE1ECE286F18D2008D79AB /* ColorSelectionHandler.h */,
+				33EE1ECC286F18B7008D79AB /* ColorSelectionHandler.m */,
+				33EE1ECF286F1AE0008D79AB /* ColorCanvasHandler.h */,
+				33EE1ED0286F1AF3008D79AB /* ColorCanvasHandler.m */,
 			);
-			path = Handler;
+			path = Handlers;
 			sourceTree = "<group>";
 		};
 		33EA0C1A2865FA3F007EF481 /* Data Structure */ = {
@@ -190,12 +195,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33EE1ED1286F1AF3008D79AB /* ColorCanvasHandler.m in Sources */,
 				33EA0BFD28650E6D007EF481 /* ColorsTraceViewController.m in Sources */,
 				33EA0BF728650E6D007EF481 /* AppDelegate.m in Sources */,
 				33EA0C1E2865FBB7007EF481 /* Stack.m in Sources */,
 				33EA0C0828650E6F007EF481 /* main.m in Sources */,
+				33EE1ECD286F18B7008D79AB /* ColorSelectionHandler.m in Sources */,
 				33EA0BFA28650E6D007EF481 /* SceneDelegate.m in Sources */,
-				33EA0C192865B7B0007EF481 /* ColorsTraceHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

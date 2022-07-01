@@ -13,8 +13,9 @@
 		33EA0BD528645F18007EF481 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33EA0BD328645F18007EF481 /* Main.storyboard */; };
 		33EA0BD728645F1A007EF481 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33EA0BD628645F1A007EF481 /* Assets.xcassets */; };
 		33EA0BDA28645F1A007EF481 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33EA0BD828645F1A007EF481 /* LaunchScreen.storyboard */; };
-		33EA0BE5286482B1007EF481 /* ColorsTraceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EA0BE4286482B1007EF481 /* ColorsTraceHandler.swift */; };
 		33EA0BE72864A620007EF481 /* StackInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EA0BE62864A620007EF481 /* StackInterface.swift */; };
+		33EE1EC6286EF06F008D79AB /* ColorSelectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EE1EC5286EF06F008D79AB /* ColorSelectionHandler.swift */; };
+		33EE1EC8286EF19B008D79AB /* ColorCanvasHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EE1EC7286EF19B008D79AB /* ColorCanvasHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +27,9 @@
 		33EA0BD628645F1A007EF481 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33EA0BD928645F1A007EF481 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		33EA0BDB28645F1A007EF481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		33EA0BE4286482B1007EF481 /* ColorsTraceHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsTraceHandler.swift; sourceTree = "<group>"; };
 		33EA0BE62864A620007EF481 /* StackInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackInterface.swift; sourceTree = "<group>"; };
+		33EE1EC5286EF06F008D79AB /* ColorSelectionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectionHandler.swift; sourceTree = "<group>"; };
+		33EE1EC7286EF19B008D79AB /* ColorCanvasHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCanvasHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +77,7 @@
 		33EA0BE12864627B007EF481 /* Colors Trace */ = {
 			isa = PBXGroup;
 			children = (
-				33EA0BE3286462AB007EF481 /* Handler */,
+				33EA0BE3286462AB007EF481 /* Handlers */,
 				33EA0BE22864629B007EF481 /* VC */,
 			);
 			path = "Colors Trace";
@@ -89,12 +91,13 @@
 			path = VC;
 			sourceTree = "<group>";
 		};
-		33EA0BE3286462AB007EF481 /* Handler */ = {
+		33EA0BE3286462AB007EF481 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
-				33EA0BE4286482B1007EF481 /* ColorsTraceHandler.swift */,
+				33EE1EC5286EF06F008D79AB /* ColorSelectionHandler.swift */,
+				33EE1EC7286EF19B008D79AB /* ColorCanvasHandler.swift */,
 			);
-			path = Handler;
+			path = Handlers;
 			sourceTree = "<group>";
 		};
 		33EA0BE828650AF6007EF481 /* Data Structure */ = {
@@ -177,9 +180,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				33EA0BE72864A620007EF481 /* StackInterface.swift in Sources */,
+				33EE1EC6286EF06F008D79AB /* ColorSelectionHandler.swift in Sources */,
+				33EE1EC8286EF19B008D79AB /* ColorCanvasHandler.swift in Sources */,
 				33EA0BD228645F18007EF481 /* ColorsTraceViewController.swift in Sources */,
 				33EA0BCE28645F18007EF481 /* AppDelegate.swift in Sources */,
-				33EA0BE5286482B1007EF481 /* ColorsTraceHandler.swift in Sources */,
 				33EA0BD028645F18007EF481 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

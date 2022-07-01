@@ -15,7 +15,8 @@ protocol StackInterface {
 }
 
 /// Stack is an abstract data type, which is a list of elements organized according to the LIFO principle.
-/// - Parameter items: Populate stack with initial values
+/// - Parameters
+///     - *items*: Populate stack with initial values
 ///
 /// Adds a new element at the end of the stack.
 /// ```

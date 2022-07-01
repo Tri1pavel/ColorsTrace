@@ -13,7 +13,7 @@ import UIKit
 ///
 /// - Parameters
 ///     - *colors*: [UIButtons] representing available colors for selection.
-///     - *wasChanged*: Completion handler event when selected color was changed.
+///     - *colorWasChanged*: Completion handler event when selected color was changed.
 class ColorSelectionHandler {
     private var colors: [UIButton]
     private var colorWasChangedCompletionHandler: (UIColor?) -> ()

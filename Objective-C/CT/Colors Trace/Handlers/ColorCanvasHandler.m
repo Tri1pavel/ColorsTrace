@@ -1,19 +1,16 @@
 //
-//  ColorsTraceHandler.m
+//  ColorCanvasHandler.m
 //  CT
 //
-//  Created by Development on 24.06.2022.
+//  Created by Development on 01.07.2022.
 //
 
-#import "ColorsTraceHandler.h"
+#import "ColorCanvasHandler.h"
 #import "Stack.h"
 
-@interface ColorsTraceHandler ()
+@interface ColorCanvasHandler ()
 @property (strong, nonatomic) UIView *canvas;
-@property (strong, nonatomic) NSArray *colorButtons;
-@property (nonatomic, copy) void (^colorWasChanged)(UIColor *color);
-@property (nonatomic, copy) void (^undoStackWasChanged)(BOOL isEnabled);
-@property (nonatomic, copy) void (^redoStackWasChanged)(BOOL isEnabled);
+@property (nonatomic, copy) void (^wasChanged)(BOOL isUndoEnabled, BOOL isRedoEnabled);
 
 @property (strong, nonatomic) UIColor *selectedColor;
 @property (strong, nonatomic) NSMutableDictionary *hashColorDictionary;
@@ -21,31 +18,23 @@
 @property (strong, nonatomic) Stack *redoStack;
 @end
 
-@implementation ColorsTraceHandler
+@implementation ColorCanvasHandler
 
 // Override Setters:
-- (void)setSelectedColor:(UIColor *)color {
-    _selectedColor = color;
-    self.colorWasChanged(color);
-}
-
 - (void)setCanvas:(UIView *)canvas {
+    // A Boolean indicating whether sublayers are clipped to the layer’s bounds
+    [canvas.layer setMasksToBounds:true];
+    // Set the canvas
     _canvas = canvas;
     [self addTapGestureRecognizerToCanvas];
 }
 
 - (id)initWithCanvas:(UIView *) canvas
-    withColorButtons:(NSArray *) colorButtons
-    withColorWasChangedHandler:(void (^)(UIColor *color)) colorWasChangedHandler
-    withUndoStackWasChangedHandler:(void (^)(BOOL isEnabled)) undoStackWasChangedHandler
-    withRedoStackWasChangedHandler:(void (^)(BOOL isEnabled)) redoStackWasChangedHandler {
+withWasChangedHandler:(void (^)(BOOL isUndoEnabled, BOOL isRedoEnabled)) wasChangedHandler {
     self = [super init];
     if (self) {
         self.canvas = canvas;
-        self.colorButtons = colorButtons;
-        self.colorWasChanged = colorWasChangedHandler;
-        self.undoStackWasChanged = undoStackWasChangedHandler;
-        self.redoStackWasChanged = redoStackWasChangedHandler;
+        self.wasChanged = wasChangedHandler;
         
         // Init dictionary for hash colors
         self.hashColorDictionary = [[NSMutableDictionary alloc] init];
@@ -91,9 +80,10 @@
     [self.canvas addSubview:view];
     // Add view to "undo" stack
     [self.undoStack push:view];
-    // Undo completion handler
-    BOOL isEnabled = [self.undoStack.items count] == 0 ? false : true;
-    self.undoStackWasChanged(isEnabled);
+    // Completion handler
+    BOOL isUndoEnabled = [self.undoStack.items count] == 0 ? false : true;
+    BOOL isRedoEnabled = [self.redoStack.items count] == 0 ? false : true;
+    self.wasChanged(isUndoEnabled, isRedoEnabled);
 }
 
 - (int)updateHashWithColor:(UIColor *) color withAscending:(BOOL) isAscending {
@@ -103,43 +93,26 @@
     return current;
 }
 
-- (void)colorWasChanged:(UIButton *)sender {
-    if (sender.isSelected) {
-        // Deselect button that previously was selected
-        sender.selected = !sender.selected;
-    } else {
-        // Deselect all buttons
-        for (id color in self.colorButtons) {
-            [color setSelected:false];
-        }
-        // Select the button that was tapped
-        sender.selected = !sender.selected;
-    }
-    
-    self.selectedColor = sender.isSelected ? sender.backgroundColor : nil;
+- (void)colorWasChangedWith:(UIColor *)color {
+    self.selectedColor = color;
 }
 
 - (void)undo {
     UIView *view = [self.undoStack pop];
-    // Undo completion handler
-    BOOL isUndoEnabled = [self.undoStack.items count] == 0 ? false : true;
-    self.undoStackWasChanged(isUndoEnabled);
     // Update hash for removed color
     [self updateHashWithColor: view.backgroundColor withAscending: false];
     // Remove view from canvas
     [view removeFromSuperview];
     // Add view to "redo" stack
     [self.redoStack push:view];
-    // Redo completion handler
+    // Completion handler
+    BOOL isUndoEnabled = [self.undoStack.items count] == 0 ? false : true;
     BOOL isRedoEnabled = [self.redoStack.items count] == 0 ? false : true;
-    self.redoStackWasChanged(isRedoEnabled);
+    self.wasChanged(isUndoEnabled, isRedoEnabled);
 }
 
 - (void)redo {
     UIView *view = [self.redoStack pop];
-    // Redo completion handler
-    BOOL isRedoEnabled = [self.redoStack.items count] == 0 ? false : true;
-    self.redoStackWasChanged(isRedoEnabled);
     // Get location from restored view
     CGPoint location = CGPointMake(view.frame.origin.x + view.frame.size.width * 0.5, view.frame.origin.y + view.frame.size.height * 0.5);
     // Get color from restored view
@@ -149,3 +122,4 @@
 }
 
 @end
+

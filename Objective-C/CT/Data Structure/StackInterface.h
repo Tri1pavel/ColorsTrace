@@ -8,13 +8,8 @@
 #import <UIKit/UIKit.h>
 
 @protocol StackInterface
-
-@required
 - (void)push:(id) element;
-@required
 - (id)pop;
-@required
 - (id)peek;
-
 @end
 
